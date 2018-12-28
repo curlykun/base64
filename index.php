@@ -1,10 +1,19 @@
 <form action="index.php" method="post">
-	<label>user name :
-	<input type="text" name="username" value="aji.maulana"> </label>
-	<label>nik :
-	<input type="text" name="nik" value="10843"> </label>
-
-	<input type="submit" name="" value="Kirim">
+    <label>user name :
+        <select name="username" id="">
+            <option value=""> - </option>
+            <option value="aji.maulana">aji.maulana</option>
+            <option value="tania.anindita">tania.anindita</option>
+            <option value="triastanto">triastanto</option>
+        </select>
+    <label>nik :
+        <select name="nik" id="">
+            <option value=""> - </option>
+            <option value="10843">aji.maulana (10843)</option>
+            <option value="11729">tania.anindita (11729)</option>
+            <option value="11725">triastanto (11725)</option>
+        </select>
+    <input type="submit" name="" value="Kirim">
 </form>
 
 <?php
@@ -38,12 +47,12 @@ class OS_BR{
                          "Google Chrome"        => "/chrome(.*)/i",
                          "MAXTHON"              => "/MAXTHON(.*)/i",
                          "Opera"                => "/Opera(.*)/i",
-                         );
+                    );
         foreach($browser as $key => $value){
             if(preg_match($value, $this->agent)){
                 $this->info = array_merge($this->info,array("Browser" => $key));
                 $this->info = array_merge($this->info,array(
-                  "Version" => $this->getVersion($key, $value, $this->agent)));
+                    "Version" => $this->getVersion($key, $value, $this->agent)));
                 break;
             }else{
                 $this->info = array_merge($this->info,array("Browser" => "UnKnown"));
@@ -108,7 +117,7 @@ class OS_BR{
             break;
 
             case "all" : return array($this->info["Version"], 
-              $this->info['Operating System'], $this->info['Browser']);
+                $this->info['Operating System'], $this->info['Browser']);
             break;
 
             default: return "Unkonw";
